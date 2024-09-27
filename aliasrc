@@ -17,4 +17,4 @@ alias gcko="git checkout"
 alias gadd="git add ."
 alias gadog='PAGER="less -F -X" git adog'
 alias glog='PAGER="less -F -X" git log'
-alias gbranch="git branch"
+# alias gbranch="git branch"

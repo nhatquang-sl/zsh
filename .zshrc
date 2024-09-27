@@ -5,16 +5,16 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-bindkey '^[[A' history-substring-search-up
-bindkey '^[OA' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey '^[OB' history-substring-search-down
-bindkey -e
-bindkey '^[[1;9C' forward-word
-bindkey '^[[1;9D' backward-word
+# zmodload zsh/terminfo
+# bindkey "$terminfo[kcuu1]" history-substring-search-up
+# bindkey "$terminfo[kcud1]" history-substring-search-down
+# bindkey '^[[A' history-substring-search-up
+# bindkey '^[OA' history-substring-search-up
+# bindkey '^[[B' history-substring-search-down
+# bindkey '^[OB' history-substring-search-down
+# bindkey -e
+# bindkey '^[[1;9C' forward-word
+# bindkey '^[[1;9D' backward-word
 
 # load aliasrc if it exists
 [ -f "${ZDOTDIR}/aliasrc" ] && source "${ZDOTDIR}/aliasrc"
@@ -25,8 +25,8 @@ bindkey '^[[1;9D' backward-word
 [ -f "${ZDOTDIR}/pluginrc" ] && source "${ZDOTDIR}/pluginrc"
 
 # echo "hello from zsh" 
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+# export NVM_DIR=~/.nvm
+# source $(brew --prefix nvm)/nvm.sh
 
 # source $ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme
 
@@ -37,3 +37,8 @@ source $(brew --prefix nvm)/nvm.sh
 # source ${ZDOTDIR}/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # source ${ZDOTDIR}/plugins/f-sy-h/F-Sy-H.plugin.zsh
+
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+source ${ZDOTDIR}/show-select.zsh
+source ${ZDOTDIR}/gbranch.zsh
