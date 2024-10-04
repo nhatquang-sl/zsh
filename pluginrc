@@ -4,7 +4,8 @@
     local ZPLUGINDIR=${ZDOTDIR}/plugins
     github=$1
     plugin=$2
-    
+    # ECHO "Plugins"
+    # ECHO "$ZPLUGINDIR"
     if [ ! -d "${ZPLUGINDIR}/${plugin}" ]; then
       echo "WARNING: ${plugin} not found. Installing..."
       git clone "https://github.com/${github}/${plugin}" "${ZPLUGINDIR}/${plugin}"
@@ -14,12 +15,13 @@
     if [ "${plugin}" = "powerlevel10k" ]; then
       source "${ZPLUGINDIR}/${plugin}/${plugin}.zsh-theme"
     else
+      # ECHO "${ZPLUGINDIR}/${plugin}/${plugin}.plugin.zsh"
       source "${ZPLUGINDIR}/${plugin}/${plugin}.plugin.zsh"
     fi
   }
 
-  apply zsh-users zsh-history-substring-search
   apply zsh-users zsh-autosuggestions
+  apply zsh-users zsh-history-substring-search
   apply romkatv powerlevel10k
   apply z-shell F-Sy-H
 }

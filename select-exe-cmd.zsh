@@ -1,8 +1,6 @@
-#!/bin/zsh
-
-# Initialize the counter variable
-gbranch () {
-    local CmdStr=$1 #"git branch"
+selectExeCmd() {
+    local CmdStr=$1
+    local CmdTemplate=$2
     local userInput=""
     local selectedIndex=0
     local ascii=0
@@ -15,8 +13,6 @@ gbranch () {
     done < <(eval "$CmdStr")
     branches+=("")
 
-    # # echo $branches
-    # # selectOptions "${branches[@]}" "dev" 0
     matchedOptionIndices=$(selectOptions "${branches[@]}" "" 0)
     local IFS=$'\n'  # Set the IFS to newline
     local -a lines=(${=matchedOptionIndices})  # Split input_string into array
@@ -29,9 +25,7 @@ gbranch () {
     done
 
     local matchedIndices=(${(s: :)lines[-1]})  # Split searchText into an array
-    # for i in {1..${#matchedIndices[@]}}; do
-    #     echo $branches[$matchedIndices[$i]]
-    # done
+    
     while true; do
         # Read a single keypress
         read -s -k 1 keyPress
@@ -85,15 +79,27 @@ gbranch () {
         # Clear the screen on each loop iteration
         clear
 
+        if [[ $ascii -ge 0 ]]; then
+            matchedOptionIndices=$(selectOptions "${branches[@]}" $userInput $selectedIndex)
+        fi
+
         if [[ $ascii -eq 96 ]]; then  # `
             echo -e "\n======================== QUIT ==========================\n"
             break
+        elif [[ $ascii -eq 10 && ${#matchedOptionIndices[@]} -gt 0 ]]; then  # Enter
+            local exeCmd=${branches[$matchedIndices[$selectedIndex + 1]]}
+            exeCmd="${exeCmd//[ *]/}"
+            exeCmd="${CmdTemplate//\[selectedCmd\]/$exeCmd}"
+            echo -e "\e[32m$exeCmd\e[0m"  # Green color for selected item
+            eval "$exeCmd"
+
+            echo -n "\e[35mPress any Key to Continue...\e[0m"
+            read -s -k 1 var_name
+            userInput=""
+            clear
         fi
 
-        # echo $selectedIndex
-        # echo ${#matchedIndices[@]}
-        if [[ $ascii -ge 0 ]]; then
-            `matchedOptionIndices`=$(selectOptions "${branches[@]}" $userInput $selectedIndex)
+        if [[ ${#matchedOptionIndices[@]} -gt 0 ]]; then
             IFS=$'\n'  # Set the IFS to newline
             lines=(${=matchedOptionIndices})  # Split input_string into array
 
@@ -107,7 +113,10 @@ gbranch () {
             matchedIndices=(${(s: :)lines[-1]})  # Split searchText into an array
         fi
 
-        echo "Key pressed: $keyPress, ascii: $ascii"
+        # echo "Key pressed: $keyPress, ascii: $ascii"
+        # # echo "Matched Indices: [$matchedOptionIndices]"
+        # echo "Selected index: $selectedIndex => $matchedIndices[$selectedIndex + 1]"
+        # echo "Selected option: $branches[$matchedIndices[$selectedIndex + 1]]"
         print -n $userInput
     done
 }
@@ -162,5 +171,3 @@ selectOptions() {
     fi
     echo $matchedOptionIndices
 }
-
-# gbranch "git branch";

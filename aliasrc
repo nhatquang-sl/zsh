@@ -13,8 +13,8 @@ alias kchrome="ps -e | rg chrom | awk '{print $1}' | xargs kill -9"
 alias gpush="git push"
 alias gpull="git pull --prune"
 alias gc="git commit -m"
-alias gcko="git checkout"
+# alias gcko="git checkout"
 alias gadd="git add ."
 alias gadog='PAGER="less -F -X" git adog'
 alias glog='PAGER="less -F -X" git log'
-# alias gbranch="git branch"
+alias gbranch="git branch"

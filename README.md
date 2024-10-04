@@ -1,3 +1,27 @@
+# Windows:
+- Add `source ~/.bashrc;` to the end of file`C:\Program Files\Git\etc\bash.bashrc`;
+- Create `C:\Users\LT\.bashrc` file:
+  ```bash
+  # Launch Zsh
+  if [ -t 1 ]; then
+    exec zsh
+  fi
+  ```
+- Update `C:\Program Files\Git\etc\zsh\zshenv`:
+  ```bash
+  if [[ -z "$XDG_CONFIG_HOME" ]]
+  then
+      export XDG_CONFIG_HOME="/c/Users/LT"
+  fi
+
+  # echo "$XDG_CONFIG_HOME"
+
+  if [[ -d "$XDG_CONFIG_HOME/zsh" ]]
+  then
+      # double check by run `echo $ZDOTDIR`
+      export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+  fi
+  ```
 - `echo $SHELL`: check which kind of shell is running (`bash` or `zsh`).
 - `which zsh`:
 - move zsh config files to `.config` folder
