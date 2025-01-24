@@ -22,6 +22,7 @@
       export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
   fi
   ```
+# Mac
 - `echo $SHELL`: check which kind of shell is running (`bash` or `zsh`).
 - `which zsh`:
 - move zsh config files to `.config` folder
@@ -63,3 +64,7 @@
 # [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search)
 - `git clone https://github.com/zsh-users/zsh-history-substring-search ${ZDOTDIR}/plugins/zsh-history-substring-search`
 - `source ${ZDOTDIR}/plugins/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh`
+
+
+# Reference
+- https://www.youtube.com/watch?v=rgdR27KMxpo

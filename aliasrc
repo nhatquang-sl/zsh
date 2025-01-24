@@ -10,8 +10,8 @@ alias free='free -m'
 alias kchrome="ps -e | rg chrom | awk '{print $1}' | xargs kill -9"
 
 # Git Aliases
-alias gpush="git push"
-alias gpull="git pull --prune"
+# alias gpush="git push"
+# alias gpull="git pull"
 alias gc="git commit -m"
 # alias gcko="git checkout"
 alias gadd="git add ."
