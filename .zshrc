@@ -49,7 +49,5 @@ source ${ZDOTDIR}/git-cmds/gckonew.zsh
 source ${ZDOTDIR}/git-cmds/gpull.zsh
 source ${ZDOTDIR}/git-cmds/gpush.zsh
 source ${ZDOTDIR}/git-cmds/gpushforce.zsh
-source D:/QN.Expenditure/scripts/qnapiclientgenerate.zsh
-source D:/QN.Expenditure/scripts/qndbinit.zsh
-source D:/QN.Expenditure/scripts/qndbremove.zsh
-source D:/QN.Expenditure/scripts/qndbupdate.zsh
+source ${ZDOTDIR}/git-cmds/gtagnew.zsh
+source D:/QN.Expenditure/scripts/.zshrc
